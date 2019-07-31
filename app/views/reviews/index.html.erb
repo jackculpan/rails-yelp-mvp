@@ -1,0 +1,13 @@
+<h1> Reviews </h1>
+<% @reviews.each do |review| %>
+<ul>
+  <li> <%= review.content %> </li>
+  <li> <%= review.rating %></li>
+</ul>
+<% end %>
+
+
+<%= link_to "Add review", new_restaurant_review_path(@restaurant.id), method: :new, class: "btn btn-primary"%></li>
+
+<%= link_to "Go back", restaurants_path, class: "btn btn-primary"%></li>
+

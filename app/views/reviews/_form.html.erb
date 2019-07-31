@@ -1,0 +1,18 @@
+<!-- app/views/restaurants/_form.html.erb -->
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <% if @review.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :content %>
+  <%= f.input :rating %>
+
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+
+<% end %>

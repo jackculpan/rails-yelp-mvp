@@ -1,0 +1,25 @@
+<h1> Restaurants </h1>
+<ul>
+  <h2> <%= @restaurant.name %> </h2>
+  <li> <%= @restaurant.address %></li>
+  <li> <%= @restaurant.phone_number %></li>
+  <li> <%= @restaurant.category %></li>
+  <%= link_to "Edit restaurant", edit_restaurant_path(@restaurant.id), class: "btn btn-primary mb-2" %>
+  <%= link_to "Delete restaurant", restaurant_path(@restaurant.id), method: :destroy, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary mb-2" %>
+  <br>
+  <%= link_to "View next", restaurant_path(@restaurant.id+1), class: "btn btn-primary mb-2" %>
+  <%= link_to "View previous", restaurant_path(@restaurant.id-1), class: "btn btn-primary mb-2" %>
+  <%= link_to "View all", restaurants_path, class: "btn btn-primary mb-2" %>
+<h2> Reviews </h2>
+  <% @restaurant.reviews.each do |review| %>
+  <ul>
+    <li> <%= review.content %> </li>
+    <li> <%= review.rating %></li>
+    <% if review.content.nil? %>
+      <%= "No reviews to show" %>
+    <% end %>
+  </ul>
+  <% end %>
+  <%= link_to "Add review", new_restaurant_review_path(@restaurant.id), method: :new, class: "btn btn-primary"%>
+  <%= link_to "Go back", restaurants_path, class: "btn btn-primary"%>
+</ul>

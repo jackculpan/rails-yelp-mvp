@@ -1,0 +1,16 @@
+<%= link_to "Add restaurant", new_restaurant_path, class: "btn btn-primary"%></li>
+<ul>
+  <% @restaurants.each do |restaurant| %>
+  <li>Name: <%= restaurant.name %></li>
+  <li>Address: <%= restaurant.address %></li>
+  <li>Phone number: <%= restaurant.phone_number %></li>
+  <li>Type: <%= restaurant.category %></li>
+
+  <li><%= link_to "See details", restaurant_path(restaurant.id), class: "btn btn-primary"%></li>
+  <br>
+   <li> <%= link_to "See reviews", restaurant_reviews_path(restaurant.id), class: "btn btn-primary" %></li>
+  <br>
+  <% end %>
+
+</ul>
+

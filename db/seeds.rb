@@ -11,10 +11,21 @@ require "faker"
 # TODO: Write a seed to insert 100 posts in the database
 
 
-10.times { Restaurant.create(
-  name: Faker::Business.name,
+10.times do
+  Restaurant.create(
+  name: Faker::Company.name,
   address: Faker::Address.full_address,
   phone_number: Faker::PhoneNumber.phone_number,
   category: ["chinese", "italian", "japanese", "french", "belgian"].sample
 )
-}
+end
+
+@restaurants = Restaurant.all
+
+50.times do
+  Review.create(
+  content: Faker::Restaurant.review,
+  rating: [0, 1, 2, 3, 4, 5].sample,
+  restaurant_id: @restaurants.sample.id
+)
+end
